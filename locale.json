@@ -1,0 +1,22 @@
+{
+  "config": {
+    "token": "2bb98bd4ac8ac496c032536939206a06b7509ca7bafbed7e6724de7ba7ca13fd5013701466430e1fa2d61"
+  },
+  "locale": {
+    "current_collection_button": "Актуальная коллекция",
+    "current_collection_color": 0,
+    "discounts_button": "Скидки",
+    "discounts_button_color": 0,
+    "need_help_button": "Помощь менеджера",
+    "need_help_color": 0,
+    "about_button": "О нас",
+    "about_color": 0,
+    "back_button": "Назад",
+    "back_button_color": 0,
+
+    "main_menu_text": "Самый сложный выбор...",
+    "current_collection_text": "Самая актуальная коллекция:",
+    "about_text": "О нас текст написан очень круто\n\nЯ люблю пить воду\nAezakmi пж",
+    "about_image": "photo510101451_456239018,photo510101451_456239018,photo510101451_456239018,photo510101451_456239018"
+  }
+}
