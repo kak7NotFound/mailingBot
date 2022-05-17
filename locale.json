@@ -4,18 +4,23 @@
   },
   "locale": {
     "current_collection_button": "Актуальная коллекция",
-    "current_collection_color": 0,
+    "current_collection_button_color": "primary",
     "discounts_button": "Скидки",
-    "discounts_button_color": 0,
+    "discounts_button_color": "secondary",
     "need_help_button": "Помощь менеджера",
-    "need_help_color": 0,
+    "need_help_button_color": "negative",
     "about_button": "О нас",
-    "about_color": 0,
+    "about_button_color": "positive",
     "back_button": "Назад",
-    "back_button_color": 0,
+    "back_button_color": "positive",
+
+    "manager_start_message": "Кожаный мешок уже в пути!",
+    "manager_end_message": "Тикет закрыт!",
+    "message_to_close_ticket": "/close",
 
     "main_menu_text": "Самый сложный выбор...",
     "current_collection_text": "Самая актуальная коллекция:",
+    "discounts_text": "Самые актуальные скидки",
     "about_text": "О нас текст написан очень круто\n\nЯ люблю пить воду\nAezakmi пж",
     "about_image": "photo510101451_456239018,photo510101451_456239018,photo510101451_456239018,photo510101451_456239018",
 
