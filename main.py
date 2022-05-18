@@ -96,7 +96,7 @@ class Main:
                 event_name = event_type.split(":")[0]
                 event_client_id = event_type.split(":")[1]
 
-                Logging.add_string(f'"","{event_client_id}","{event_name}","{datetime.datetime.now()}"')
+                Logging.add_string(f'"{event_client_id}","{event_name}","{datetime.datetime.now()}"')
 
                 if event_name == "about_button":
                     self.edit_msg(event_client_id, locale.get_locale("about_text"),
