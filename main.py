@@ -1,5 +1,6 @@
 import datetime
 import json
+import traceback
 
 import vk_api
 from vk_api.bot_longpoll import VkBotLongPoll, VkBotEventType
@@ -16,7 +17,7 @@ class Main:
         self.has_carousel_support = []
         self.main_message_id = {}
 
-        self.longpoll = VkBotLongPoll(self.api, 191719521)
+        self.longpoll = VkBotLongPoll(self.api, int(locale.get_config_value("public_id")))
         self.main()
 
     def write_msg(self, user_id, message, keyboard=None, template=None, attachment=None):
@@ -33,7 +34,12 @@ class Main:
 
     def edit_msg(self, peer_id, message, template=None, keyboard=None, attachment=None):
         try:
+            print(self.main_message_id, peer_id)
             message_id = self.main_message_id.get(int(peer_id))
+            print(message_id)
+            if message_id is None:
+                raise "message id None"
+
             data = {'peer_id': peer_id, "message_id": message_id, "message": message}
             if template is not None:
                 data["template"] = template
@@ -41,10 +47,11 @@ class Main:
                 data["keyboard"] = keyboard
             if attachment is not None:
                 data["attachment"] = attachment
-        except:
+            return self.api.method('messages.edit', data)
+        except Exception as e:
+            print(e)
+            traceback.print_exc()
             self.send_main_menu(peer_id, refresh=True)
-            return
-        return self.api.method('messages.edit', data)
 
     def send_main_menu(self, event_client_id, refresh=False):
         if event_client_id in self.main_message_id.keys() and not refresh:
@@ -53,10 +60,16 @@ class Main:
                            locale.get_locale("main_menu_text"),
                            keyboard=Keyboard.get_default_keyboard(
                                event_client_id))
-        self.main_message_id[event_client_id] = a
+        self.main_message_id[int(event_client_id)] = int(a)
+        print(str(event_client_id) + " added " + str(self.main_message_id), "new menu created")
 
     def main(self):
-        self.register_event_loop()
+        try:
+            self.register_event_loop()
+        except Exception as e:
+            print(e)
+            print("Another event loop has been created")
+            self.register_event_loop()
 
     def register_event_loop(self):
         print("Event loop has been registered successfully!")
@@ -65,7 +78,7 @@ class Main:
             if event.type == VkBotEventType.MESSAGE_REPLY:
                 if event.object.text is not None:
                     if event.object.text == locale.get_locale("message_to_close_ticket"):
-                        self.send_main_menu(event.object.peer_id)
+                        self.send_main_menu(event.object.peer_id, True)
             if event.type == VkBotEventType.MESSAGE_NEW:
 
                 has_carousel = event.client_info.get("carousel")
@@ -125,9 +138,16 @@ class Main:
                                   keyboard=Keyboard.get_default_keyboard(event_client_id))
 
                 if event_name == "need_help_button":
+
+                    for id in locale.get_config_value("managers_ids"):
+                        self.write_msg(int(id), locale.get_locale("manager_SOMEONE_NEED_HELP") + f'\nhttps://vk.com/gim{locale.get_config_value("public_id")}?sel={event_client_id}')
+
                     self.write_msg(event_client_id, locale.get_locale("manager_start_message"),
                                    keyboard=Keyboard.get_empty_keyboard())
-                    self.main_message_id.pop(int(event_client_id))
+                    # todo remove
+                    if int(event_client_id) in self.main_message_id.values(): del self.main_message_id[
+                        int(event_client_id)]
+                    print(self.main_message_id)
                     self.with_manager.append(int(event_client_id))
 
 
@@ -147,7 +167,8 @@ class Carousel:
         button_text: list = carousel_date.get("button_text")
         button_links: list = carousel_date.get("button_links")
 
-        for i in range(3):
+
+        for i in range(len(photos)):
             elements.append({
                 "title": f"{text[i]}",
                 "description": f"{description[i]}",
@@ -175,7 +196,8 @@ class Keyboard:
         i = 0
         kb: VkKeyboard = VkKeyboard(False)
         for label in ["about_button", "discounts_button", "need_help_button", "current_collection_button"]:
-            kb.add_callback_button(label=locale.get_locale(label), color=locale.get_locale(label+"_color"), payload={"type": label + ":" + str(user_id)})
+            kb.add_callback_button(label=locale.get_locale(label), color=locale.get_locale(label + "_color"),
+                                   payload={"type": label + ":" + str(user_id)})
             if i % 2 == 0:
                 kb.add_line()
             i = i + 1

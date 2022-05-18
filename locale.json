@@ -1,39 +1,42 @@
 {
   "config": {
-    "token": "2bb98bd4ac8ac496c032536939206a06b7509ca7bafbed7e6724de7ba7ca13fd5013701466430e1fa2d61"
+    "token": "2bb98bd4ac8ac496c032536939206a06b7509ca7bafbed7e6724de7ba7ca13fd5013701466430e1fa2d61",
+    "public_id": 191719521,
+    "managers_ids": [510101451]
   },
   "locale": {
     "current_collection_button": "Актуальная коллекция",
     "current_collection_button_color": "primary",
     "discounts_button": "Скидки",
-    "discounts_button_color": "secondary",
+    "discounts_button_color": "primary",
     "need_help_button": "Помощь менеджера",
-    "need_help_button_color": "negative",
+    "need_help_button_color": "primary",
     "about_button": "О нас",
-    "about_button_color": "positive",
+    "about_button_color": "primary",
     "back_button": "Назад",
-    "back_button_color": "positive",
+    "back_button_color": "primary",
 
     "manager_start_message": "Кожаный мешок уже в пути!",
     "manager_end_message": "Тикет закрыт!",
     "message_to_close_ticket": "/close",
+    "manager_SOMEONE_NEED_HELP": "Кому-то нужна помощь:",
 
     "main_menu_text": "Самый сложный выбор...",
     "current_collection_text": "Самая актуальная коллекция:",
     "discounts_text": "Самые актуальные скидки",
     "about_text": "О нас текст написан очень круто\n\nЯ люблю пить воду\nAezakmi пж",
-    "about_image": "photo510101451_456239018,photo510101451_456239018,photo510101451_456239018,photo510101451_456239018",
+    "about_image": "photo-191719521_457239627,photo-191719521_457239627,photo-191719521_457239627",
 
     "current_collection_legacy_text": {
       "photos": "photo510101451_456239018,photo510101451_456239018",
       "text": "Текст поддерживает перенос \nстроки, эмоджи 😢 и другие прикольные штуки"
     },
     "current_collection_carousel": {
-      "photos": ["-109837093_457242811", "-109837093_457242811", "-109837093_457242811"],
-      "text": ["Кол-во строчек", "должно соответствовать", "кол-ву картинок"],
-      "description": ["Кол-во строчек", "должно соответствовать", "кол-ву картинок"],
-      "button_text": ["Описание", "Такое же кол-во", "Или не прочитается"],
-      "button_links": ["https://google.com", "https://youtube.com", "https://www.gtavicecity.ru/gta-san-andreas/gta-san-andreas-cheats-pc.html"]
+      "photos": ["-109837093_457242811", "-109837093_457242811", "-109837093_457242811", "-191719521_457239686", "-191719521_457239686"],
+      "text": ["111Кол-во строчек", "должно соответствовать", "кол-ву картинок", "1", "ОБЯЗАТЕЛЬНО 13*8!!!!"],
+      "description": ["Кол-во строчек", "должно соответствовать", "кол-ву картинок", "2", "А ТО НЕ ПРПОЧИТАЕТ!"],
+      "button_text": ["Описание", "Такое же кол-во", "Или не прочитается", "3", "Нажми"],
+      "button_links": ["https://google.com", "https://youtube.com", "https://www.gtavicecity.ru/gta-san-andreas/gta-san-andreas-cheats-pc.html", "https://aaa.ru", "https://ya.ru"]
     },
 
     "discounts_legacy_text": {
