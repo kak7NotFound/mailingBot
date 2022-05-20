@@ -64,12 +64,12 @@ class Main:
         print(str(event_client_id) + " added " + str(self.main_message_id), "new menu created")
 
     def main(self):
-        try:
-            self.register_event_loop()
-        except Exception as e:
-            print(e)
-            print("Another event loop has been created")
-            self.register_event_loop()
+        while True:
+            try:
+                self.register_event_loop()
+            except Exception as e:
+                print("Another event loop has been created")
+                self.main()
 
     def register_event_loop(self):
         print("Event loop has been registered successfully!")
