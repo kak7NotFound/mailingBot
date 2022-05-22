@@ -69,6 +69,7 @@ class Main:
                 self.register_event_loop()
             except Exception as e:
                 print("Another event loop has been created")
+                traceback.print_exc()
                 self.main()
 
     def register_event_loop(self):
@@ -179,7 +180,8 @@ class Carousel:
                 },
                 "buttons": [{
                     "action": {
-                        "type": "text",
+                        "type": "open_link",
+                        "link": f"{button_links[i]}",
                         "label": f"{button_text[i]}",
                         "payload": "{}"
                     }
